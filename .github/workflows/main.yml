@@ -26,19 +26,8 @@ jobs:
         uses: r-lib/actions/setup-r@v1
         with:
           r-version: '4.1.2'
-      # install renv package
-      - run: R -e 'install.packages(c("renv","dplyr","googlesheets4","googledrive"))'
-      # set up cache
-      - name: Cache packages
-        uses: actions/cache@v1
-        with:
-           path: ${{ env.RENV_PATHS_ROOT }}
-           key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
-           restore-keys: |-
-              ${{ runner.os }}-renv-
+      - run: R -e 'install.packages(c("dplyr","googlesheets4","googledrive"))'
       - run: sudo apt-get install -y --no-install-recommends libcurl4-openssl-dev
-      # install c++ dependencies and install necessary packages
-      - run: R -e 'renv::restore()'
       # execute Rscript
       - run: Rscript 0_digital_scans_reader.R
 
