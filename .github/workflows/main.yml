@@ -27,7 +27,7 @@ jobs:
         with:
           r-version: '4.1.2'
       # install renv package
-      - run: R -e 'install.packages(c("renv","tidyverse","googlgsheets4","googledrive"))'
+      - run: R -e 'install.packages(c("renv","tidyverse","googlesheets4","googledrive"))'
       # set up cache
       - name: Cache packages
         uses: actions/cache@v1
