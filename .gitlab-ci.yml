@@ -1,0 +1,7 @@
+run:
+  tags:
+      - docker
+  image: rocker/tidyverse
+  script:
+      - Rscript 0_digital_scans_reader.R
+
