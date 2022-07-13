@@ -2,9 +2,9 @@
 
 name: run_data_prep
 
-on:
-  schedule:
-    - cron: '0 9 * * *'
+on: [workflow_dispatch]
+  #schedule:
+   # - cron: '0 9 * * *'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
