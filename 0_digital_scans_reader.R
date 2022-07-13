@@ -1,7 +1,7 @@
 #These first few lines run only when the file is run in RStudio, !!NOT when an Rmd/Rnw file calls it!!
 rm(list=ls(all=TRUE))  #Clear the variables from previous runs.
 cat("\f") # clear console
-library(tidyverse)
+library(dplyr)
 library(googlesheets4)
 library(googledrive)
 
