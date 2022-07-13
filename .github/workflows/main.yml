@@ -40,5 +40,5 @@ jobs:
       # install c++ dependencies and install necessary packages
       - run: R -e 'renv::restore()'
       # execute Rscript
-      - run: 0_digital_scans_reader.R
+      - run: Rscript 0_digital_scans_reader.R
 
