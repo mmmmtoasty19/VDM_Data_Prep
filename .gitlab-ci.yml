@@ -1,0 +1,9 @@
+before_script:
+  - R -e  'install.packages(c("tidyverse","googlesheets4","googledrive"))'
+
+run:
+  tags:
+      - docker
+  image: rocker/r-ver:4.1.2
+  script:
+      - Rscript 0_digital_scans_reader.R

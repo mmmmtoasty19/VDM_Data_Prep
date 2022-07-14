@@ -1,7 +1,7 @@
 #These first few lines run only when the file is run in RStudio, !!NOT when an Rmd/Rnw file calls it!!
 rm(list=ls(all=TRUE))  #Clear the variables from previous runs.
 cat("\f") # clear console
-library(dplyr)
+library(tidyverse)
 library(googlesheets4)
 library(googledrive)
 
@@ -36,10 +36,7 @@ drive_auth(path = Sys.getenv("GOOGLE_JSON"))
 # load google sheet data --------------------------------------------------
 
 # Load data
-MD_VDM_raw <- googlesheets4::read_sheet("1lErAsk3znF6a1rcRvrqwXxwJWSFx4Z07L0cqLSo_H_c")
-
-  
-MD_VDM_ds1 <- MD_VDM_raw %>%   
+MD_VDM_raw <- googlesheets4::read_sheet("1lErAsk3znF6a1rcRvrqwXxwJWSFx4Z07L0cqLSo_H_c") %>%   
   dplyr::select(
   date = Timestamp
   ,SWC = `Email Address`
