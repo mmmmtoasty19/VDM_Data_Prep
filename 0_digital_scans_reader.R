@@ -65,7 +65,11 @@ drive_auth(path = Sys.getenv("GOOGLE_JSON"))
 
 
 cd_vdm_form_raw <- get_sheet_as_csv(Sys.getenv("SMARTSHEET_VDM_ID")) %>% read_csv() %>% 
-  filter(!is.na("1st Onsite LPA"))
+  filter(!is.na("1st Onsite LPA")) %>% 
+  rename("date" = "1st Onsite LPA"
+         ,"SWC" = "Primary SWC"
+         ,"manager" = "SWC Manager"
+         ,"scan" = "Lab Measurement?")
 
 cat("The first part of this worked!")
 
