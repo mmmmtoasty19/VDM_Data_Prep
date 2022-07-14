@@ -1,8 +1,0 @@
-image:  rocker/tidyverse
-
-run:
-    before_script:
-        - apt-get update
-    
-    script:
-        - Rscript 0_digital_scans_reader.R
