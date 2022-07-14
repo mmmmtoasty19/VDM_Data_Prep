@@ -100,6 +100,7 @@ combine_data <- bind_rows(CD_VDM_ds1,MD_VDM_ds1) %>%
 
 combine_data %>% write_csv("vdm_digital_scans_combine.csv")
 
+
 drive_put(
   media = "vdm_digital_scans_combine.csv"  
   ,name = "vdm_digital_scans_combine"
