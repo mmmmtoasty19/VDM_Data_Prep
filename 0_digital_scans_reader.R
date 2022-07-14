@@ -65,7 +65,11 @@ drive_auth(path = Sys.getenv("GOOGLE_JSON"))
 
 
 cd_vdm_form_raw <- get_sheet_as_csv(Sys.getenv("SMARTSHEET_VDM_ID")) %>% read_csv() %>% 
-  filter(!is.na("1st Onsite LPA")) %>% 
+  filter(!is.na("1st Onsite LPA"))
+
+
+
+
   select(
     "date" = "1st Onsite LPA"
     ,"SWC" = "Primary SWC"
@@ -75,7 +79,7 @@ cd_vdm_form_raw <- get_sheet_as_csv(Sys.getenv("SMARTSHEET_VDM_ID")) %>% read_cs
   mutate(
     across("date", ~lubridate::mdy(.))
     ,across("scan", ~replace_na(.,"No Data"))
-    ,"labs_scanned" = if_else(str_detect(scan,"Digitally"),1,0)
+    ,"labs_scanned" = if_else(str_detect("scan","Digitally"),1,0)
     ,"labs_visited" = 1
   )
 
