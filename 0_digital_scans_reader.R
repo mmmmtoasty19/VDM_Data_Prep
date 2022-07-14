@@ -67,7 +67,7 @@ drive_auth(path = Sys.getenv("GOOGLE_JSON"))
 cd_vdm_form_raw <- get_sheet_as_csv(Sys.getenv("SMARTSHEET_VDM_ID")) %>% read_csv() %>% 
   filter(!is.na("1st Onsite LPA"))
 
-
+cat("The first part of this worked!")
 
 
   # select(
