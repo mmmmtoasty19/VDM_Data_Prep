@@ -81,7 +81,7 @@ CD_VDM_ds1 <- cd_vdm_form_raw %>%
   mutate(
     across("date", ~lubridate::mdy(.))
     ,across("scan", ~replace_na(.,"No Data"))
-    ,"labs_scanned" = if_else(str_detect("scan","Digitally"),1,0)
+    ,"labs_scanned" = if_else(str_detect(scan,"Digitally"),1,0)
     ,"labs_visited" = 1
   )
 
@@ -98,11 +98,11 @@ combine_data <- bind_rows(CD_VDM_ds1,MD_VDM_ds1) %>%
 
 # upload file -------------------------------------------------------------
 
-combine_data %>% write_csv("vdm_digital_scans_combine.csv")
 
-
-drive_put(
-  media = "vdm_digital_scans_combine.csv"  
+combine_data %>% write_csv("C:/Users/belangew/Documents/GitHub/VDM_Goals_Data_Prep/vdm_digital_scans_combine.csv")
+  
+  drive_put(
+  media = "C:/Users/belangew/Documents/GitHub/VDM_Goals_Data_Prep/vdm_digital_scans_combine.csv"
   ,name = "vdm_digital_scans_combine"
   ,type = "spreadsheet"
   ,path = "https://drive.google.com/drive/folders/1-NISdxcBrK2COpeJwtOAouoajGeHFq9H/"
