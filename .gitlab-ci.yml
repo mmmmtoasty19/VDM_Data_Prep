@@ -1,6 +1,8 @@
+image:  rocker/tidyverse
+
 run:
-  tags:
-      - docker
-  image: rocker/tidyverse
-  script:
-      - Rscript 0_digital_scans_reader.R
+    before_script:
+        - apt-get update
+    
+    script:
+        - Rscript 0_digital_scans_reader.R
