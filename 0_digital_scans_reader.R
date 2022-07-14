@@ -70,18 +70,18 @@ cd_vdm_form_raw <- get_sheet_as_csv(Sys.getenv("SMARTSHEET_VDM_ID")) %>% read_cs
 
 
 
-  select(
-    "date" = "1st Onsite LPA"
-    ,"SWC" = "Primary SWC"
-    ,"manager" = "SWC Manager"
-    ,"scan" = "Lab Measurement?"
-  ) %>% 
-  mutate(
-    across("date", ~lubridate::mdy(.))
-    ,across("scan", ~replace_na(.,"No Data"))
-    ,"labs_scanned" = if_else(str_detect("scan","Digitally"),1,0)
-    ,"labs_visited" = 1
-  )
+  # select(
+  #   "date" = "1st Onsite LPA"
+  #   ,"SWC" = "Primary SWC"
+  #   ,"manager" = "SWC Manager"
+  #   ,"scan" = "Lab Measurement?"
+  # ) %>% 
+  # mutate(
+  #   across("date", ~lubridate::mdy(.))
+  #   ,across("scan", ~replace_na(.,"No Data"))
+  #   ,"labs_scanned" = if_else(str_detect("scan","Digitally"),1,0)
+  #   ,"labs_visited" = 1
+  # )
 
 # combine data  -----------------------------------------------------------
 
