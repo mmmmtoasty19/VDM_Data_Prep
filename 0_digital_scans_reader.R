@@ -36,27 +36,27 @@ drive_auth(path = Sys.getenv("GOOGLE_JSON"))
 # load google sheet data --------------------------------------------------
 
 # Load data
-MD_VDM_raw <- googlesheets4::read_sheet("1lErAsk3znF6a1rcRvrqwXxwJWSFx4Z07L0cqLSo_H_c") %>%   
-  dplyr::select(
-  date = Timestamp
-  ,SWC = `Email Address`
-  ,labs_visited = `How many labs did you visit in the last two weeks?`
-  ,labs_scanned = `How many labs did you scan with Matterport in the last two weeks?`) %>% 
-  dplyr::mutate(  #turn Email address into SWC name
-    across(SWC, ~str_extract(., "^.*(?=(@))") )
-    ,across(SWC, ~str_remove(.,"\\.jw1"))  #should figure out a way to make this reusable
-    ,across(SWC, ~str_replace_all(., "\\.", " "))
-    ,across(SWC, ~snakecase::to_title_case(.))
-  ) %>% 
-  dplyr::mutate( #convert timestamp to date 
-    across(date, ~lubridate::as_date(.))
-  ) %>%
-  dplyr::mutate( #fix issue with incorrect amount of labs visited
-    across(labs_visited, ~if_else(labs_visited < labs_scanned, labs_scanned, labs_visited ))
-  ) %>% 
-  dplyr::mutate(
-    manager = "Todd Ward"
-  )
+# MD_VDM_raw <- googlesheets4::read_sheet("1lErAsk3znF6a1rcRvrqwXxwJWSFx4Z07L0cqLSo_H_c") %>%   
+#   dplyr::select(
+#   date = Timestamp
+#   ,SWC = `Email Address`
+#   ,labs_visited = `How many labs did you visit in the last two weeks?`
+#   ,labs_scanned = `How many labs did you scan with Matterport in the last two weeks?`) %>% 
+#   dplyr::mutate(  #turn Email address into SWC name
+#     across(SWC, ~str_extract(., "^.*(?=(@))") )
+#     ,across(SWC, ~str_remove(.,"\\.jw1"))  #should figure out a way to make this reusable
+#     ,across(SWC, ~str_replace_all(., "\\.", " "))
+#     ,across(SWC, ~snakecase::to_title_case(.))
+#   ) %>% 
+#   dplyr::mutate( #convert timestamp to date 
+#     across(date, ~lubridate::as_date(.))
+#   ) %>%
+#   dplyr::mutate( #fix issue with incorrect amount of labs visited
+#     across(labs_visited, ~if_else(labs_visited < labs_scanned, labs_scanned, labs_visited ))
+#   ) %>% 
+#   dplyr::mutate(
+#     manager = 'Todd Ward'
+#   )
 
 
 
