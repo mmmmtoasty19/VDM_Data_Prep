@@ -35,6 +35,6 @@ r-scripts-356215-6d242c3b974d.json
 .DS_Store
 
 
-# Reports Folder is hidden for now
+# Reports Folder is hidden for now - comment out line below if files need to be shared
 
 /reports/*
