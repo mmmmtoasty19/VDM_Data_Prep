@@ -45,6 +45,7 @@ MD_VDM_ds1 <- MD_VDM_raw %>%
     ,SWC = `Email Address`
     ,labs_visited = `How many labs did you visit in the last two weeks?`
     ,labs_scanned = `How many labs did you scan with Matterport in the last two weeks?`
+    ,scan_comment = `If there were any sites NOT scanned, why were they not scanned?`
     ) %>%
   dplyr::mutate(  #turn Email address into SWC name
     across(SWC, ~str_extract(., "^.*(?=(@))") )
@@ -60,7 +61,8 @@ MD_VDM_ds1 <- MD_VDM_raw %>%
   ) %>%
   dplyr::mutate(
     manager = 'Todd Ward'
-  )
+  ) %>% 
+  filter(!str_detect(SWC,"Zach Williams"))  #using to filter out the rows Zach added to VDM form
 
 
 
@@ -77,6 +79,7 @@ CD_VDM_ds1 <- cd_vdm_form_raw %>%
     ,"SWC" = "Primary SWC"
     ,"manager" = "SWC Manager"
     ,"scan" = "Lab Measurement?"
+    ,"scan_comment" = "Scan issues Comment" 
   ) %>%
   mutate(
     across("date", ~lubridate::mdy(.))
