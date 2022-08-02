@@ -61,6 +61,7 @@ MD_VDM_ds1 <- MD_VDM_raw %>%
   ) %>%
   dplyr::mutate(
     manager = 'Todd Ward'
+    ,scan = "Digital Scan"
   ) %>% 
   filter(!str_detect(SWC,"Zach Williams"))  #using to filter out the rows Zach added to VDM form
 
