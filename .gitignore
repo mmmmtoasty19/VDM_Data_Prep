@@ -33,8 +33,6 @@ r-scripts-356215-6d242c3b974d.json
 .Rproj.user
 .Rdata
 .DS_Store
-
-
 # Reports Folder is hidden for now - comment out line below if files need to be shared
-
 /reports/*
+.httr-oauth-salesforcer
