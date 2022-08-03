@@ -62,6 +62,7 @@ MD_VDM_ds1 <- MD_VDM_raw %>%
   dplyr::mutate(
     manager = 'Todd Ward'
     ,scan = "Digital Scan"
+    ,franchise = "MD/TD"
   ) %>% 
   filter(!str_detect(SWC,"Zach Williams"))  #using to filter out the rows Zach added to VDM form
 
@@ -87,6 +88,7 @@ CD_VDM_ds1 <- cd_vdm_form_raw %>%
     ,across("scan", ~replace_na(.,"No Data"))
     ,"labs_scanned" = if_else(str_detect(scan,"Digitally"),1,0)
     ,"labs_visited" = 1
+    ,franchise = "CD"
   )
 
 # combine data  -----------------------------------------------------------
